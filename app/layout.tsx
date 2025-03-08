@@ -4,10 +4,12 @@ import '../styles/global.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-      <div>
-        <Header />
-        <main>{children}</main>
-      </div>
+      <html>
+        <body>
+            <Header />
+            <main>{children}</main>
+        </body>
+      </html>
   );
 };
 
