@@ -5,7 +5,8 @@ import '../styles/global.css';
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
       <html>
-        <body>
+       <body style={{ overflowX: 'hidden' }}>
+
             <Header />
             <main>{children}</main>
         </body>

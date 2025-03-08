@@ -17,7 +17,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, total }) => {
                     {cartItems.map((item, index) => (
                         <div key={index}>
                             <h3>{item.product.title}</h3>
-                            <p>{item.product.price} x {item.quantity}</p>
+                                <p>{item.product.price} x {item.quantity}</p>
                         </div>
                     ))}
                     <p>Total: ${total}</p>

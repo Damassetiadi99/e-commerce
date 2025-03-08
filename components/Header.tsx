@@ -4,28 +4,40 @@ import React from 'react';
 import Link from 'next/link';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useRouter } from 'next/navigation'
-import {Button} from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
 
 const Header = () => {
     const router = useRouter()
-
-
     return (
-        <header style={{ padding: '1rem', backgroundColor: '#333', color: '#fff' }}>
-            <div>
-                <Button onClick={() => router.push('/')} style={{ color: '#fff', fontSize: '24px' }}>
-                    E-Commerce App
-                </Button>
-            </div>
-            <div>
-                <Button onClick={() => router.push('/cart') }>
-                    <a style={{ color: '#fff', fontSize: '24px' }}>
-                        <FaShoppingCart />
-                        <span style={{ marginLeft: '8px' }}>Cart</span>
-                    </a>
-                </Button>
-            </div>
-        </header>
+        <AppBar position="static" sx={{ backgroundColor: '#333', padding: '10px 0' }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            
+            {/* Logo atau Nama Brand di Tengah */}
+            <Typography
+                variant="h5"
+                sx={{
+                    flex: 1,
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    transition: 'color 0.3s',
+                    '&:hover': { color: '#ffcc00' }
+                }}
+                onClick={() => router.push('/')}
+            >
+                Tifah Beauty Shop
+            </Typography>
+
+            {/* Tombol Cart di Kanan */}
+            <IconButton 
+                onClick={() => router.push('/cart')} 
+                sx={{ color: '#fff', '&:hover': { color: '#ffcc00' } }}
+            >
+                <FaShoppingCart size={24} />
+            </IconButton>
+        </Toolbar>
+    </AppBar>
+
     );
 };
 
