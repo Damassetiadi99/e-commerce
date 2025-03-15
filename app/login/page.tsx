@@ -38,7 +38,7 @@ const Login = () => {
 
                 router.push('/home');
             } else {
-                setErrorMessage(errorData.message || 'Login failed. Please check your credentials.');
+                setErrorMessage(response.data || 'Login failed. Please check your credentials.');
             }
         } catch (error) {
             setErrorMessage('Login failed. Please check your credentials.');
