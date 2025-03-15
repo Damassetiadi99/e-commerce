@@ -19,7 +19,7 @@ const PaymentPage = () => {
             confirmButtonText: 'OK'
         }).then(() => {
             localStorage.removeItem('cartItems');
-            window.location.href = '/Home';
+            window.location.href = '/home';
         });
     };
 

@@ -30,7 +30,7 @@ const Header = () => {
                         transition: 'color 0.3s',
                         '&:hover': { color: '#ffcc00' }
                     }}
-                    onClick={() => router.push('/Home')}
+                    onClick={() => router.push('/home')}
                 >
                     Girls Beauty Store
                 </Typography>
