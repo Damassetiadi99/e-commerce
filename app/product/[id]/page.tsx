@@ -20,13 +20,13 @@ const ProductDetail = () => {
     };
     const handleBuyNow = () => {
         if (!product) return;
-    
+
         const cartData = encodeURIComponent(JSON.stringify([{ product, quantity: 1 }]));
         const total = product.price;
-    
+
         Swal.fire({
             title: 'Konfirmasi Pembelian',
-            text: `Anda akan membeli ${product.title} seharga ${convertToRupiah(total)}.`,
+            text: `Anda akan membeli ${product.title} seharga ${convertToRupiah(Number(total))}.`,
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -40,7 +40,7 @@ const ProductDetail = () => {
         });
         // router.push(`/payment?cart=${cartData}&total=${total}`);
     };
-    
+
     useEffect(() => {
         if (id) {
             axios.get<Product>(`https://fakestoreapi.com/products/${id}`)
@@ -90,7 +90,7 @@ const ProductDetail = () => {
                     <Typography variant="h4" fontWeight="bold" textAlign="center">{product.title}</Typography>
                     <Typography variant="body1" color="text.secondary" sx={{ marginTop: '10px', textAlign: 'justify' }}>{product.description}</Typography>
                     <Typography variant="h5" sx={{ marginTop: '15px', color: 'green', textAlign: 'center' }}>
-                        {convertToRupiah(product.price)}
+                        {convertToRupiah(Number(product.price))}
                     </Typography>
 
                     <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, marginTop: '20px' }}>
