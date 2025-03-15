@@ -8,17 +8,42 @@ import LockIcon from '@mui/icons-material/Lock';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { FaShoppingCart } from 'react-icons/fa';
+import axios from "axios";
+
+interface LoginFormData {
+    email: string;
+    password: string;
+}
 
 const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const handleLogin = () => {
-    // localStorage.setItem('token', 'fakeToken');
-    router.push('/Home');
-  };
+    const handleLogin = async (email, password) => {
+        try {
+
+            const response = await axios.post('https://api.escuelajs.co/api/v1/auth/login', {
+                email: email,
+                password: password,
+            });
+            console.log(response)
+
+            if (response.status == 201) {
+                const responseData = await response.data.access_token;
+                const token = responseData;
+                localStorage.setItem('token', token);
+
+                router.push('/home');
+            } else {
+                setErrorMessage(errorData.message || 'Login failed. Please check your credentials.');
+            }
+        } catch (error) {
+            setErrorMessage('Login failed. Please check your credentials.');
+        }
+    };
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -34,39 +59,17 @@ const Login = () => {
 
         {/* Right Side: Login Form */}
         <Grid item xs={12} md={6} sx={{ padding: 4, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <Typography
-          variant="h4"
-          fontWeight="bold"
-          textAlign="center"
-          gutterBottom
-          sx={{
-            transition: 'color 0.3s',
-            '&:hover': {
-              color: '#B8860B'
-            }
-          }}
-        >
-           Login To Girls Beauty Shop
+          <Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom>
+           Login To Tifah Beauty Shop
           </Typography>
-          <Typography
-          variant="h6"
-          fontWeight="bold"
-          textAlign="center"
-          gutterBottom
-          sx={{
-            transition: 'color 0.3s',
-            '&:hover': {
-              color: '	#FFE4C4'
-            }
-          }}
-        >
-            Masuk atau buat akun untuk mulai berbelanja
+          <Typography variant="body1" textAlign="center" mb={3}>
+            Masuk atau buat akun untuk memulai berbelanja
           </Typography>
 
-          <TextField 
-            label="Email" 
-            fullWidth 
-            margin="normal" 
+          <TextField
+            label="Email"
+            fullWidth
+            margin="normal"
             variant="outlined"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -79,11 +82,11 @@ const Login = () => {
             }}
           />
 
-          <TextField 
-            label="Password" 
-            type={passwordVisible ? 'text' : 'password'} 
-            fullWidth 
-            margin="normal" 
+          <TextField
+            label="Password"
+            type={passwordVisible ? 'text' : 'password'}
+            fullWidth
+            margin="normal"
             variant="outlined"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -102,18 +105,28 @@ const Login = () => {
               )
             }}
           />
+            {errorMessage && <p style={style.errorTextStyle}>{errorMessage}</p>}
 
-          <Button variant="contained" color="primary" fullWidth sx={{ mt: 3, mb: 2 }} onClick={handleLogin}>
+          <Button variant="contained" color="primary" fullWidth sx={{ mt: 3, mb: 2 }} onClick={() => handleLogin(email, password)}>
             Masuk
           </Button>
 
           <Typography variant="body2" textAlign="center">
-            Belum punya akun? <Link href="/Register" color="primary">Registrasi disini</Link>
+            Belum punya akun? <Link href="/register" color="primary">Registrasi disini</Link>
           </Typography>
         </Grid>
       </Grid>
     </Container>
   );
 };
+
+const style= {
+    errorTextStyle : {
+        fontSize: '0.9rem',
+        color: 'red',
+        textAlign: 'center',
+    },
+}
+
 
 export default Login;

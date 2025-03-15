@@ -8,11 +8,11 @@ const MainPage = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    
+
     if (token) {
-      router.push('/Home'); // Arahkan ke halaman home jika sudah login
+      router.push('/home'); // Arahkan ke halaman home jika sudah login
     } else {
-      router.push('/Login'); // Arahkan ke halaman login jika belum login
+      router.push('/login'); // Arahkan ke halaman login jika belum login
     }
   }, []);
 

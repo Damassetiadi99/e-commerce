@@ -8,16 +8,13 @@ import { FaShoppingCart, FaSignOutAlt } from 'react-icons/fa';
 const Header = () => {
     const router = useRouter();
     const pathname = usePathname();
-
-    // Sembunyikan header di halaman login dan register
-    const isAuthPage = pathname === '/Login' || pathname === '/Register';
+    const isAuthPage = pathname === '/login' || pathname === '/register';
 
     if (isAuthPage) return null;
 
     const handleLogout = () => {
-        // Hapus token atau session saat logout
         localStorage.removeItem('token');
-        router.push('/Login');
+        router.push('/login');
     };
 
     return (
@@ -39,15 +36,15 @@ const Header = () => {
                 </Typography>
                 <div style={{ display: 'flex', gap: '15px' }}>
                     <Tooltip title="Cart">
-                        <IconButton 
-                            onClick={() => router.push('/cart')} 
+                        <IconButton
+                            onClick={() => router.push('/cart')}
                             sx={{ color: '#fff', '&:hover': { color: '#ffcc00' } }}
                         >
                             <FaShoppingCart size={24} />
                         </IconButton>
                     </Tooltip>
                     <Tooltip title="Logout">
-                        <IconButton 
+                        <IconButton
                             onClick={handleLogout}
                             sx={{ color: '#fff', '&:hover': { color: 'red' } }}
                         >
