@@ -22,7 +22,7 @@ const AuthForm = ({ isLogin }) => {
       return;
     }
     localStorage.setItem('token', 'fakeToken');
-    router.push('/Home');
+    router.push('/Login');
   };
 
   const togglePasswordVisibility = () => {
@@ -34,7 +34,7 @@ const AuthForm = ({ isLogin }) => {
       <Box sx={{ width: '90%', maxWidth: 500, p: 4, borderRadius: 3, boxShadow: 3, backgroundColor: 'white' }}>
         <Typography variant="h5" textAlign="center" mb={3} fontWeight="bold">
           <FaShoppingCart className="me-2 mx-auto" style={{ width: '24px', height: '24px' }} />
-          {isLogin ? 'Login to SIMS PPOB' : 'Register for Tifah Beauty shop'}
+          {isLogin ? 'Login to SIMS PPOB' : 'Register for Girls Beauty shop'}
         </Typography>
 
         <TextField 

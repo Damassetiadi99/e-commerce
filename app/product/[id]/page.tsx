@@ -13,6 +13,11 @@ const ProductDetail = () => {
     const params = useParams();
     const id = params?.id ? Number(params.id) : null;
 
+    const convertToRupiah = (dollarAmount: number) => {
+        const rate = 14000;
+        return (dollarAmount * rate).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+    };
+
     useEffect(() => {
         if (id) {
             axios.get<Product>(`https://fakestoreapi.com/products/${id}`)
@@ -61,14 +66,16 @@ const ProductDetail = () => {
                 <CardContent sx={{ padding: '25px' }}>
                     <Typography variant="h4" fontWeight="bold" textAlign="center">{product.title}</Typography>
                     <Typography variant="body1" color="text.secondary" sx={{ marginTop: '10px', textAlign: 'justify' }}>{product.description}</Typography>
-                    <Typography variant="h5" sx={{ marginTop: '15px', color: 'green', textAlign: 'center' }}>${product.price}</Typography>
+                    <Typography variant="h5" sx={{ marginTop: '15px', color: 'green', textAlign: 'center' }}>
+                        {convertToRupiah(product.price)}
+                    </Typography>
 
                     <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, marginTop: '20px' }}>
                         <Button variant="contained" color="primary" sx={{ flex: 1 }}>Buy Now</Button>
                         <Button variant="outlined" color="secondary" onClick={handleAddToCart} sx={{ flex: 1 }}>Add to Cart</Button>
                     </Box>
                 </CardContent>
-                
+
             </Card>
         </Box>
     );

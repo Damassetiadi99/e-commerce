@@ -34,11 +34,22 @@ const Login = () => {
 
         {/* Right Side: Login Form */}
         <Grid item xs={12} md={6} sx={{ padding: 4, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom>
-           Login To Tifah Beauty Shop
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          textAlign="center"
+          gutterBottom
+          sx={{
+            transition: 'color 0.3s',
+            '&:hover': {
+              color: '#ffcc00'
+            }
+          }}
+        >
+           Login To Girls Beauty Shop
           </Typography>
           <Typography variant="body1" textAlign="center" mb={3}>
-            Masuk atau buat akun untuk memulai berbelanja
+            Masuk atau buat akun untuk mulai berbelanja
           </Typography>
 
           <TextField 

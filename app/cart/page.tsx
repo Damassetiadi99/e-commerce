@@ -27,6 +27,11 @@ const CartPage = () => {
         }
     }, [cartItems]);
 
+    const convertToRupiah = (dollarAmount: number) => {
+        const rate = 14000;
+        return (dollarAmount * rate).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+    };
+
     const updateQuantity = (id: number, change: number) => {
         setCartItems(prevCart =>
             prevCart
@@ -64,7 +69,7 @@ const CartPage = () => {
                                     <Box>
                                         <Typography variant="h6">{item.product.title}</Typography>
                                         <Typography variant="body2" color="text.secondary">
-                                            ${item.product.price.toFixed(2)}
+                                            {convertToRupiah(item.product.price)}
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -80,7 +85,7 @@ const CartPage = () => {
                                 </Box>
 
                                 <Typography variant="h6" color="primary">
-                                    ${(item.product.price * item.quantity).toFixed(2)}
+                                    {convertToRupiah(item.product.price * item.quantity)}
                                 </Typography>
                                 <IconButton onClick={() => updateQuantity(item.product.id, -item.quantity)} color="error">
                                     <DeleteIcon />
@@ -93,7 +98,7 @@ const CartPage = () => {
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
                         <Typography variant="h5" fontWeight="bold">Total:</Typography>
                         <Typography variant="h5" fontWeight="bold" color="green">
-                            ${total.toFixed(2)}
+                            {convertToRupiah(total)}
                         </Typography>
                     </Box>
 
