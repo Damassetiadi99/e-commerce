@@ -30,9 +30,9 @@ const Header = () => {
                         transition: 'color 0.3s',
                         '&:hover': { color: '#ffcc00' }
                     }}
-                    onClick={() => router.push('/')}
+                    onClick={() => router.push('/Home')}
                 >
-                    Girls Beauty Shop
+                    Girls Beauty Store
                 </Typography>
                 <div style={{ display: 'flex', gap: '15px' }}>
                     <Tooltip title="Cart">
