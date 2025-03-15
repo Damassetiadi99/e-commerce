@@ -2,9 +2,7 @@
 
 import React from 'react';
 import { Product } from '@/types/index';
-import Link from 'next/link';
 import {useRouter} from "next/navigation";
-import Image from 'next/image'
 import { Card, CardMedia, CardContent, CardActions, Button, Typography } from '@mui/material';
 
 interface ProductCardProps {
@@ -26,10 +24,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             height="140"
             image={product.image}
             alt={product.title}
-            
+
             sx={{ objectFit: 'contain', padding: '10px' }}
         />
-    
+
         <CardContent sx={{ textAlign: 'center' ,flexGrow: 1, }}>
             <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
                 {product.title}
@@ -41,14 +39,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 {product.price}
             </Typography>
         </CardContent>
-    
+
         <CardActions sx={{ justifyContent: 'center', margin : 'auto',marginBottom:'16px' }}>
             <Button variant="contained" color="primary" onClick={() => navigateToProduct(`${product.id}`)}>
                 View Details
             </Button>
         </CardActions>
     </Card>
-    
+
     );
 };
 

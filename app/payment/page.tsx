@@ -3,13 +3,15 @@
 import { useSearchParams } from 'next/navigation';
 import { Box, Typography, Button, Divider, Card, CardContent, Grid, Stack, Paper } from '@mui/material';
 import Swal from 'sweetalert2';
-const PaymentPage = () => {
+import { Suspense } from 'react'
+
+
+const Page = () => {
     const searchParams = useSearchParams();
     const cartData = searchParams.get('cart');
     const total = searchParams.get('total');
 
     const cartItems = cartData ? JSON.parse(decodeURIComponent(cartData)) : [];
-    console.log(cartItems)
     const handlePayment = () => {
         Swal.fire({
             title: 'Pembayaran Berhasil!',
@@ -66,4 +68,11 @@ const PaymentPage = () => {
     );
 };
 
+const PaymentPage = () => {
+    return (
+        <Suspense>
+            <Page />
+        </Suspense>
+    )
+}
 export default PaymentPage;

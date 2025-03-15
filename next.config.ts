@@ -1,11 +1,13 @@
-import type { NextConfig } from "next";
+import { NextConfig } from 'next';
 
-const nextConfig: NextConfig = {
+const nextConfig: { images: { domains: string[] }; reactStrictMode: boolean; experimental: { missingSuspenseWithCSRBailout: boolean } } = {
     reactStrictMode: true,
     images: {
         domains: ['fakestoreapi.com'],
     },
+    experimental: {
+        missingSuspenseWithCSRBailout: false,
+    },
 };
 
-
-export default nextConfig;
+module.exports = nextConfig;

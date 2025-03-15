@@ -22,14 +22,12 @@ const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-    const handleLogin = async (email, password) => {
+    const handleLogin = async (email: string, password: string) => {
         try {
-
             const response = await axios.post('https://api.escuelajs.co/api/v1/auth/login', {
                 email: email,
                 password: password,
             });
-            console.log(response)
 
             if (response.status == 201) {
                 const responseData = await response.data.access_token;
@@ -159,7 +157,6 @@ const style= {
     errorTextStyle : {
         fontSize: '0.9rem',
         color: 'red',
-        textAlign: 'center',
     },
 }
 

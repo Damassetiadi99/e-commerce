@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { TextField, Button, Container, Typography, Box, Link, Grid, InputAdornment, IconButton } from '@mui/material';
+import { TextField, Button, Container, Typography, Box, Link, InputAdornment, IconButton } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
@@ -20,7 +20,7 @@ const AuthForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-    const onSubmit = async (name, email, password) => {
+    const onSubmit = async (name: string, email: string, password: string) => {
         const credentials = {
             name: name,
             email: email,
@@ -34,13 +34,11 @@ const AuthForm = () => {
                 password: password,
                 avatar: 'https://picsum.photos/800',
             });
-            console.log(credentials)
 
             if (response.status == 201) {
                 router.push('/login');
             }
-        } catch (error: any) {
-            console.log(error)
+        } catch (error) {
             setErrorMessage('Registration failed. Please try again.');
         }
     };
@@ -188,7 +186,6 @@ const style= {
     errorTextStyle : {
         fontSize: '0.9rem',
         color: 'red',
-        textAlign: 'center',
     },
 }
 

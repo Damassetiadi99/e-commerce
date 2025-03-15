@@ -44,8 +44,8 @@ const CartPage = () => {
         );
     };
 
-    const total = useMemo(() => 
-        cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0), 
+    const total = useMemo(() =>
+        cartItems.reduce((acc, item) => acc + Number(item.product.price) * item.quantity, 0),
         [cartItems]
     );
 
@@ -70,13 +70,13 @@ const CartPage = () => {
                         <Box key={item.product.id}>
                             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', py: 1 }}>
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                                    <img src={item.product.image} alt={item.product.title} 
-                                         style={{ width: 60, height: 60, borderRadius: 8, objectFit: 'cover' }} 
+                                    <img src={item.product.image} alt={item.product.title}
+                                         style={{ width: 60, height: 60, borderRadius: 8, objectFit: 'cover' }}
                                     />
                                     <Box>
                                         <Typography variant="h6">{item.product.title}</Typography>
                                         <Typography variant="body2" color="text.secondary">
-                                            {convertToRupiah(item.product.price)}
+                                            {convertToRupiah(Number(item.product.price))}
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -92,7 +92,7 @@ const CartPage = () => {
                                 </Box>
 
                                 <Typography variant="h6" color="primary">
-                                    {convertToRupiah(item.product.price * item.quantity)}
+                                    {convertToRupiah(Number(item.product.price) * item.quantity)}
                                 </Typography>
                                 <IconButton onClick={() => updateQuantity(item.product.id, -item.quantity)} color="error">
                                     <DeleteIcon />
