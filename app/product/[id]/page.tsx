@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import axios from 'axios';
 import { Product, CartItem } from '@/types/index';
 import { Card, CardContent, Typography, Button, Box } from '@mui/material';
+import Swal from 'sweetalert2';
 
 const ProductDetail = () => {
     const [product, setProduct] = useState<Product | null>(null);
@@ -17,7 +18,29 @@ const ProductDetail = () => {
         const rate = 14000;
         return (dollarAmount * rate).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
     };
-
+    const handleBuyNow = () => {
+        if (!product) return;
+    
+        const cartData = encodeURIComponent(JSON.stringify([{ product, quantity: 1 }]));
+        const total = product.price;
+    
+        Swal.fire({
+            title: 'Konfirmasi Pembelian',
+            text: `Anda akan membeli ${product.title} seharga ${convertToRupiah(total)}.`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Beli Sekarang!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                router.push(`/payment?cart=${cartData}&total=${total}`);
+            }
+        });
+        // router.push(`/payment?cart=${cartData}&total=${total}`);
+    };
+    
     useEffect(() => {
         if (id) {
             axios.get<Product>(`https://fakestoreapi.com/products/${id}`)
@@ -71,7 +94,7 @@ const ProductDetail = () => {
                     </Typography>
 
                     <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, marginTop: '20px' }}>
-                        <Button variant="contained" color="primary" sx={{ flex: 1 }}>Buy Now</Button>
+                        <Button variant="contained" color="primary" sx={{ flex: 1 }} onClick={handleBuyNow}>Buy Now</Button>
                         <Button variant="outlined" color="secondary" onClick={handleAddToCart} sx={{ flex: 1 }}>Add to Cart</Button>
                     </Box>
                 </CardContent>

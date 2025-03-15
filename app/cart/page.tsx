@@ -4,9 +4,11 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { CartItem } from '@/types/index';
 import { Card, Typography, Button, Box, IconButton, Divider } from '@mui/material';
 import { Delete as DeleteIcon, Add as AddIcon, Remove as RemoveIcon } from '@mui/icons-material';
+import { useRouter } from 'next/navigation';
 
 const CartPage = () => {
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
+    const router = useRouter();
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -46,6 +48,11 @@ const CartPage = () => {
         cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0), 
         [cartItems]
     );
+
+    const handleCheckout = () => {
+        const encodedCart = encodeURIComponent(JSON.stringify(cartItems));
+        router.push(`/payment?cart=${encodedCart}&total=${total}`);
+    };
 
     return (
         <Box sx={{ maxWidth: 800, mx: 'auto', p: 3 }}>
@@ -102,7 +109,13 @@ const CartPage = () => {
                         </Typography>
                     </Box>
 
-                    <Button variant="contained" color="primary" fullWidth sx={{ mt: 3, fontSize: 16, fontWeight: 'bold' }}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        sx={{ mt: 3, fontSize: 16, fontWeight: 'bold' }}
+                        onClick={handleCheckout}
+                    >
                         Proceed to Checkout
                     </Button>
                 </Card>

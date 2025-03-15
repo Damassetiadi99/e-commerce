@@ -46,7 +46,7 @@ const Login = () => {
             }
           }}
         >
-           Login To Girls Beauty Shop
+           Login To Girls Beauty Store
           </Typography>
           <Typography
           variant="h6"

@@ -48,7 +48,7 @@ const AuthForm = ({ isLogin }) => {
         }}
       >
         <FaShoppingCart style={{ width: '24px', height: '24px' }} />
-        {isLogin ? 'Login to SIMS PPOB' : 'Register for Girls Beauty Shop'}
+        {isLogin ? 'Login to SIMS PPOB' : 'Register for Girls Beauty Store'}
       </Typography>
 
         <TextField 
