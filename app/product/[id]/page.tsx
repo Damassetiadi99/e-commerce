@@ -68,6 +68,7 @@ const ProductDetail = () => {
                         <Button variant="outlined" color="secondary" onClick={handleAddToCart} sx={{ flex: 1 }}>Add to Cart</Button>
                     </Box>
                 </CardContent>
+                
             </Card>
         </Box>
     );

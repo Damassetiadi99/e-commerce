@@ -25,7 +25,7 @@ const Header = () => {
                 }}
                 onClick={() => router.push('/')}
             >
-                Tifah Beauty Shop
+                Girls Shop
             </Typography>
 
             {/* Tombol Cart di Kanan */}
