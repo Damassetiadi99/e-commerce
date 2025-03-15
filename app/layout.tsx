@@ -6,7 +6,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
       <html>
         <head>
-        < title> Girls Beaty Store</title>
+          < title> Girls Beaty Store</title>
         </head>
        <body style={{ overflowX: 'hidden' }}>
             <Header />

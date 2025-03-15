@@ -52,10 +52,48 @@ const AuthForm = () => {
   return (
     <Container maxWidth="lg" sx={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Box sx={{ width: '90%', maxWidth: 500, p: 4, borderRadius: 3, boxShadow: 3, backgroundColor: 'white' }}>
-        <Typography variant="h5" textAlign="center" mb={3} fontWeight="bold">
-          <FaShoppingCart className="me-2 mx-auto" style={{ width: '24px', height: '24px' }} />
-          Register for Tifah Beauty shop
-        </Typography>
+      <h1
+        style={{
+          textAlign: 'center',
+          fontSize: '2.5rem',
+          fontWeight: 'bold',
+          color: '#333',
+          marginBottom: '20px',
+          letterSpacing: '1px',
+          fontFamily: "'Poppins', sans-serif",
+          transition: 'all 0.3s ease-in-out',
+        }}
+      >
+        Register
+      </h1>
+
+      <Typography
+        variant="h5"
+        textAlign="center"
+        mb={3}
+        fontWeight="bold"
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '10px',
+          color: '#333',
+          transition: 'all 0.3s ease-in-out',
+          '&:hover': {
+            color: '#8e54e9',
+            transform: 'scale(1.05)',
+            cursor: 'pointer',
+            textShadow: '0 4px 10px rgba(142, 84, 233, 0.4)',
+          },
+          fontFamily: "'Poppins', sans-serif",
+          letterSpacing: '0.5px',
+        }}
+      >
+        <FaShoppingCart style={{ width: '24px', height: '24px' }} />
+        create Account for Girls Beauty Store
+      </Typography>
+
+
 
           <TextField
               label="Name"

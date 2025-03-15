@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductCard from '../../components/ProductCard';
 import { Product } from '@/types/index';
-import { BsDisplay } from 'react-icons/bs';
 
 const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);

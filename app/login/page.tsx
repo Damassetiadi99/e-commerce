@@ -59,11 +59,45 @@ const Login = () => {
 
         {/* Right Side: Login Form */}
         <Grid item xs={12} md={6} sx={{ padding: 4, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom>
-              Login To Girls Beauty Store
-            </Typography>
+        <Typography
+            variant="h4"
+            fontWeight="bold"
+            textAlign="center"
+            gutterBottom
+            sx={{
+              color: 'black',
+              transition: 'all 0.3s ease-in-out',
+              '&:hover': {
+                background: 'linear-gradient(to right, #ff6bcb, #8e54e9)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                cursor: 'pointer'
+              },
+              fontFamily: "'Poppins', sans-serif",
+              letterSpacing: '1px',
+              marginBottom: '20px'
+            }}
+          >
+            Login To Girls Beauty Store
+          </Typography>
 
-            <Typography variant="body1" textAlign="center" mb={3}>
+
+          <Typography
+              variant="body1"
+              textAlign="center"
+              mb={3}
+              sx={{
+                color: '#666',
+                fontSize: '16px',
+                transition: 'all 0.3s ease-in-out',
+                '&:hover': {
+                  color: '#8e54e9',
+                  cursor: 'pointer'
+                },
+                fontFamily: "'Poppins', sans-serif",
+                letterSpacing: '0.5px'
+              }}
+            >
               Masuk atau buat akun untuk Mulai berbelanja
             </Typography>
 
