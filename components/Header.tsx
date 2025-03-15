@@ -1,10 +1,9 @@
 'use client'
 
 import React from 'react';
-import Link from 'next/link';
-import { FaShoppingCart } from 'react-icons/fa';
 import { useRouter, usePathname } from 'next/navigation';
-import { AppBar, Toolbar, Typography, IconButton } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton, Tooltip } from '@mui/material';
+import { FaShoppingCart, FaSignOutAlt } from 'react-icons/fa';
 
 const Header = () => {
     const router = useRouter();
@@ -14,6 +13,12 @@ const Header = () => {
     const isAuthPage = pathname === '/Login' || pathname === '/Register';
 
     if (isAuthPage) return null;
+
+    const handleLogout = () => {
+        // Hapus token atau session saat logout
+        localStorage.removeItem('token');
+        router.push('/Login');
+    };
 
     return (
         <AppBar position="static" sx={{ backgroundColor: '#333', padding: '10px 0' }}>
@@ -30,14 +35,26 @@ const Header = () => {
                     }}
                     onClick={() => router.push('/')}
                 >
-                    Girls Shop
+                    Girls Beauty Shop
                 </Typography>
-                <IconButton 
-                    onClick={() => router.push('/cart')} 
-                    sx={{ color: '#fff', '&:hover': { color: '#ffcc00' } }}
-                >
-                    <FaShoppingCart size={24} />
-                </IconButton>
+                <div style={{ display: 'flex', gap: '15px' }}>
+                    <Tooltip title="Cart">
+                        <IconButton 
+                            onClick={() => router.push('/cart')} 
+                            sx={{ color: '#fff', '&:hover': { color: '#ffcc00' } }}
+                        >
+                            <FaShoppingCart size={24} />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Logout">
+                        <IconButton 
+                            onClick={handleLogout}
+                            sx={{ color: '#fff', '&:hover': { color: 'red' } }}
+                        >
+                            <FaSignOutAlt size={24} />
+                        </IconButton>
+                    </Tooltip>
+                </div>
             </Toolbar>
         </AppBar>
     );

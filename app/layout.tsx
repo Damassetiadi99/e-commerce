@@ -6,7 +6,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
       <html>
        <body style={{ overflowX: 'hidden' }}>
-
             <Header />
             <main>{children}</main>
         </body>

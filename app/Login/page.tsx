@@ -42,13 +42,24 @@ const Login = () => {
           sx={{
             transition: 'color 0.3s',
             '&:hover': {
-              color: '#ffcc00'
+              color: '#B8860B'
             }
           }}
         >
            Login To Girls Beauty Shop
           </Typography>
-          <Typography variant="body1" textAlign="center" mb={3}>
+          <Typography
+          variant="h6"
+          fontWeight="bold"
+          textAlign="center"
+          gutterBottom
+          sx={{
+            transition: 'color 0.3s',
+            '&:hover': {
+              color: '	#FFE4C4'
+            }
+          }}
+        >
             Masuk atau buat akun untuk mulai berbelanja
           </Typography>
 

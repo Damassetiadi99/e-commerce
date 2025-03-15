@@ -32,10 +32,24 @@ const AuthForm = ({ isLogin }) => {
   return (
     <Container maxWidth="lg" sx={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Box sx={{ width: '90%', maxWidth: 500, p: 4, borderRadius: 3, boxShadow: 3, backgroundColor: 'white' }}>
-        <Typography variant="h5" textAlign="center" mb={3} fontWeight="bold">
-          <FaShoppingCart className="me-2 mx-auto" style={{ width: '24px', height: '24px' }} />
-          {isLogin ? 'Login to SIMS PPOB' : 'Register for Girls Beauty shop'}
-        </Typography>
+      <Typography 
+        variant="h5" 
+        textAlign="center" 
+        fontWeight="bold" 
+        mb={3}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 1,
+          color: '#333',
+          transition: 'color 0.3s ease-in-out',
+          '&:hover': { color: '#ffcc00' }
+        }}
+      >
+        <FaShoppingCart style={{ width: '24px', height: '24px' }} />
+        {isLogin ? 'Login to SIMS PPOB' : 'Register for Girls Beauty Shop'}
+      </Typography>
 
         <TextField 
           label="Email" 

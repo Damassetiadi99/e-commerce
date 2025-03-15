@@ -18,7 +18,6 @@ const Home = () => {
         .then(response => setProducts(response.data))
         .catch(error => console.error('Error fetching products:', error));
       }, []);
-      console.log(products)
       
       return (
         <div style={{width : '100%'}}>
@@ -26,8 +25,7 @@ const Home = () => {
         <div style={{ display: 'flex', flexWrap: 'wrap', width : '100%',margin : '56px'}}>
           {products.map(product => (
             <ProductCard key={product.id} product={{
-              ...product,
-              price: convertToRupiah(product.price)
+              ...product,price: convertToRupiah(product.price)
             }} />
           ))}
         </div>
